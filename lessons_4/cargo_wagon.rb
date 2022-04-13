@@ -1,7 +1,7 @@
-class WagonPassenger
+class CargoWagon
     attr_reader :wagon_type
   
     def initialize
-      @wagon_type = :passenger
+      @wagon_type = :cargo
     end
   end

@@ -173,9 +173,9 @@ class Main
 
     wagon_type = gets.chomp.to_i
     wagon = if wagon_type == 1
-              WagonCargo.new
+              CargoWagon.new
             else
-              WagonPassenger.new
+              PassengerWagon.new
             end
 
     puts wagon
