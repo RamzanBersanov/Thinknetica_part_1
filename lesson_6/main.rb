@@ -1,5 +1,5 @@
 require_relative 'manufacturer'
-require_relative 'instance_count'
+require_relative 'instance_counter'
 require_relative 'train'
 require_relative 'route'
 require_relative 'station'
