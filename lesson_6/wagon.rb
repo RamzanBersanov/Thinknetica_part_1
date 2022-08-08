@@ -6,7 +6,7 @@ class Wagon
   attr_reader :wagon_type
   
   def initialize(firm)
-    define_firm(firm)
+    @firm = firm
     validate! 
     register_instance
   end 
