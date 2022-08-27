@@ -487,8 +487,8 @@ class Main
         puts 'Введите название производителя'
         firm = gets.chomp.to_s
         puts "Укажите количество мест в вагоне"
-        seats = gets.chomp.to_i
-        wagon = PassengerWagon.new(firm, seats)
+        space = gets.chomp.to_i
+        wagon = PassengerWagon.new(firm, space)
         puts "Создан вагон #{wagon}"
       when 3
         break
@@ -504,32 +504,24 @@ class Main
     puts wagon.firm_name
   end 
 
-  def take_seat(wagon)
-    wagon.take_seat
+  def take_passenger_space(wagon)
+    wagon.take_passenger_space
     puts "Вы заняли одно место в вагоне"
   end 
 
-  def taken_seats(wagon)
-   puts "Количество занятых мест в вагоне #{ wagon.taken_seats}" 
-  end 
-
-  def free_seats(wagon)
-    puts "Количество свободных мест в вагоне #{wagon.free_seats }"
-  end 
-
-  def take_space(wagon) 
+  def take_cargo_space(wagon) 
     puts "Какой объем Вы хотите занять?"
     space = gets.chomp.to_i
-    wagon.take_space(space)
+    wagon.take_cargo_space(space)
     puts "Вы заняли #{space} литра (-ов) объема в вагоне"
   end 
 
   def taken_space(wagon) 
-   puts "Занятый объем составляет #{wagon.taken_space} литра (-ов)" 
+   puts "Занято #{wagon.taken_space} литра (-ов)/мест" 
   end 
 
   def free_space(wagon) 
-    puts "Свободный объем составляет #{wagon.free_space } литра (-ов)"
+    puts "Свободно #{wagon.free_space } литра (-ов)/мест"
   end 
 
   def valid_wagon?(wagon)
@@ -551,7 +543,7 @@ class Main
       case act
       when 1 then firm_name(wagon) 
       when 2 then puts valid_wagon?(wagon)
-      when 3 then take_space(wagon) 
+      when 3 then take_cargo_space(wagon) 
       when 4 then free_space(wagon)
       when 5 then taken_space(wagon)
       else
@@ -572,9 +564,9 @@ class Main
       case act
       when 1 then firm_name(wagon) 
       when 2 then puts valid_wagon?(wagon)
-      when 3 then take_seat(wagon)
-      when 4 then free_seats(wagon)
-      when 5 then taken_seats(wagon)
+      when 3 then take_passenger_space(wagon)
+      when 4 then free_space(wagon)
+      when 5 then taken_space(wagon)
         
       else
         break
