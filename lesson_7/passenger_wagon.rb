@@ -1,13 +1,8 @@
 class PassengerWagon < Wagon
   
-  attr_reader :seats, :taken_seats, :free_seats
-  
-  def initialize(firm, seats)
+  def initialize(firm, space)
     @wagon_type = :passenger
-    super(firm)
-    @seats = seats  
-    @taken_seats = 0
-    @free_seats = seats  
+    super(firm, space)
   end
 
   def validate!
@@ -15,9 +10,9 @@ class PassengerWagon < Wagon
     raise "Неверный тип вагона" if @wagon_type != :passenger
   end 
 
-  def take_seat
-    @free_seats = @free_seats -= 1
-    @taken_seats = @seats - @free_seats
-  end  
+  def take_passenger_space 
+    @free_space = @free_space -= 1
+    @taken_space = @space - @free_space
+  end
   
 end
