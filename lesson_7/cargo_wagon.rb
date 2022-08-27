@@ -1,13 +1,8 @@
 class CargoWagon < Wagon
-
-  attr_reader :space, :taken_space, :free_space
   
   def initialize(firm, space)
     @wagon_type = :cargo
-    super(firm)
-    @space = space
-    @taken_space = 0
-    @free_space = space  
+    super(firm, space) 
   end
 
   def validate!
@@ -15,9 +10,9 @@ class CargoWagon < Wagon
     raise "Неверный тип вагона" if @wagon_type != :cargo
   end 
 
-  def take_space(space) #объем указывается в качестве параметра метода
+  def take_cargo_space(space)
     @free_space = @free_space -= space
     @taken_space = @space - @free_space
-  end  
+  end   
   
 end
