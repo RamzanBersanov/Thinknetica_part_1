@@ -1,12 +1,10 @@
 class Wagon
   
-  attr_reader :space, :taken_space, :free_space
-  
   FIRM = /\w{3}+/
   include Manufacturer
   include InstanceCounter
 
-  attr_reader  :wagon_type
+  attr_reader  :wagon_type, :space, :taken_space, :free_space
   
   def initialize(firm, space)
     define_firm(firm)
