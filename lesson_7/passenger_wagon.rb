@@ -12,7 +12,6 @@ class PassengerWagon < Wagon
 
   def take_passenger_space 
     @free_space = @free_space -= 1
-    @taken_space = @space - @free_space
   end
   
 end
