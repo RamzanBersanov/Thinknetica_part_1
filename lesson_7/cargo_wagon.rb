@@ -12,7 +12,6 @@ class CargoWagon < Wagon
 
   def take_cargo_space(space)
     @free_space = @free_space -= space
-    @taken_space = @space - @free_space
   end   
   
 end
