@@ -19,4 +19,8 @@ class Wagon
     raise "Название фирмы не должно быть короче трех букв" if self.firm !~ FIRM
   end 
   
+  def taken_space
+    @space - @free_space
+  end 
+  
 end 
