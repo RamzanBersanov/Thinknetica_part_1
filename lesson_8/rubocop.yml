@@ -1,0 +1,19 @@
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 10
+  Metrics/CyclomaticComplexity:
+    Enabled: false
+Style/ClassVars:
+  Enabled: false
+  Metrics/CyclomaticComplexity:
+    Enabled: false
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+Metrics/ClassLength:
+  Exclude:
+    - lib/rubocop/config_obsoletion.rb
+    - lib/rubocop/options.rb
