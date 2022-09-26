@@ -207,9 +207,6 @@ class Main
 
   def valid_train?(train)
     train.valid?
-  #   true
-  # rescue StandardError
-  #   false
   end
 
   def define_train_firm(train)
@@ -352,9 +349,6 @@ class Main
 
   def valid_station?(station)
     station.valid?
-  #   true
-  # rescue StandardError
-  #   false
   end
 
   def choose_route_stations
@@ -586,9 +580,6 @@ class Main
 
   def valid_wagon?(wagon)
     wagon.valid?
-  #   true
-  # rescue StandardError
-  #   false
   end
 
   def cargo_wagon_menu(wagon)
@@ -634,17 +625,19 @@ class Main
     end
   end
 
-  def values_arrays_menu
+  def choose_class
     puts "Выберите класс"
     puts "1 Поезд"
     puts "2 Станция"
     puts "3 Маршрут"
     puts "4 Вагон"
-    puts class_number = gets.chomp
-    values_arrays_menu_go(class_number)
+    
+    # values_arrays_menu_go(class_number)
   end 
 
-  def values_arrays_menu_go(class_number)
+  def values_arrays_menu
+    choose_class
+    class_number = gets.chomp
     attributes_class = CLASSES[class_number] 
     raise "Класс #{attributes_class} пуст" if attributes_class.all.nil?
     case class_number.to_i
@@ -653,7 +646,6 @@ class Main
     when 3 then routes_values 
     when 4 then wagons_values 
     end 
-    
   rescue RuntimeError => e
     puts e.message 
     menu 
@@ -693,15 +685,8 @@ class Main
   end 
 
   def validate_values
-    puts "Выберите класс"
-    puts "1 Поезд"
-    puts "2 Станция"
-    puts "3 Вагон"
-    puts class_number = gets.chomp
-    validate_values_go(class_number)
-  end 
-
-  def validate_values_go(class_number)
+    choose_class
+    class_number = gets.chomp
     attributes_class = CLASSES[class_number] 
     raise "Класс #{attributes_class} пуст" if attributes_class.all.nil?
     case class_number.to_i
@@ -709,6 +694,9 @@ class Main
     when 2 then stations_validate
     when 3 then wagons_validate 
     end 
+  rescue RuntimeError => e
+    puts e.message 
+    menu 
   end 
 
   def trains_validate
@@ -731,9 +719,7 @@ class Main
       puts "#{value.valid?}"
     end 
   end 
-
 end
 
 
 Main.new.menu
-
