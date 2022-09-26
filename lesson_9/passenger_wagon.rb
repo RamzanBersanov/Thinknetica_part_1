@@ -2,7 +2,6 @@
 
 class PassengerWagon < Wagon
   attr_accessor_with_history :seats, :taken_seats, :free_seats
-  # strong_attr_accessor :seats, :taken_seats, :free_seats
   validate :wagon_type, :type, :passenger
   
   def initialize(firm, seats)
