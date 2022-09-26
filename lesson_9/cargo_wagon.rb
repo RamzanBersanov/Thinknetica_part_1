@@ -2,7 +2,6 @@
 
 class CargoWagon < Wagon
   attr_accessor_with_history :space, :taken_space, :free_space
-  # strong_attr_accessor :space, :taken_space, :free_space
   validate :wagon_type, :type, :passenger
   
   def initialize(firm, space)
