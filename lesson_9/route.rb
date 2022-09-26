@@ -4,7 +4,6 @@ class Route
   include InstanceCounter
   extend Accessors
   attr_accessor_with_history :name, :stations 
-  # strong_attr_accessor :name, :stations
 
   
   def initialize(stations = [])
