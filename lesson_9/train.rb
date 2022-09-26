@@ -9,7 +9,6 @@ class Train
   NUMBER = /\A\w{3}-*\w{2}\Z/.freeze
   
   attr_accessor_with_history :number, :train_type, :wagons, :current_station, :current_speed, :route
-  # strong_attr_accessor :number, :type, :train_type, :wagons, :current_station, :current_speed, :route
 
   validate :number, :presence
   validate :number, :format, :NUMBER
