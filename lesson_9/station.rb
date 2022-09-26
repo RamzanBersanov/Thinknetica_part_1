@@ -9,7 +9,6 @@ class Station
   validate :name, :format,:STATION
   
   attr_accessor_with_history :trains, :name
-  # strong_attr_accessor :trains, :name
   
   @@all = []
   
