@@ -10,7 +10,6 @@ class Wagon
   validate :firm, :format, :FIRM
   
   attr_accessor_with_history :wagon_type, :firm
-  # strong_attr_accessor :wagon_type, :firm 
   
   def initialize(firm)
     self.firm = firm
