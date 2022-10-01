@@ -177,8 +177,8 @@ class Game
     reward = loser.stake + winner.stake 
     puts "#{reward} долларов(-а) передано в банк #{winner.name}"
     winner.bank += reward
-    puts "В банке #{winner.name} @#{winner.bank}"
-    puts "В банке #{loser.name} @#{loser.bank}"
+    puts "В банке #{winner.name} #{winner.bank} долларов"
+    puts "В банке #{loser.name} #{loser.bank} долларов"
   end 
   
 end 
