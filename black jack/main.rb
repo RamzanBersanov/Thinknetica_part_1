@@ -27,8 +27,8 @@ class Game
   private
 
   def deck
-    deck_points = [(1..10).to_a, 10, 10, 10, 11].flatten
-    faces = [(1..10).to_a, :jack, :lady, :king, :ace].flatten 
+    deck_points = [(2..10).to_a, 10, 10, 10, 11].flatten
+    faces = [(2..10).to_a, :jack, :lady, :king, :ace].flatten 
     unsuited_deck = faces.zip(deck_points).to_h
     
     @deck = {}
@@ -70,7 +70,7 @@ class Game
     puts "В Вашем банке #{player.bank} долларов"  
     puts "В банке крупье #{dealer.bank} долларов" 
     loop do
-      player_move(player, dealer)
+      player_choice(player, dealer)
       results(player, dealer)
       break if :stop_game 
     end 
@@ -82,19 +82,31 @@ class Game
     puts "Карты крупье #{dealer.cards}, очки #{dealer.points(deck)}"
   end 
 
-  def player_move(player, dealer) 
+  def player_left_choice(player, dealer)
     puts "#{player.name}, выберите ход:"
-    puts "1. Пропустить"
+    puts "1. Открыть карты"
     puts "2. Добавить карту"
-    puts "3. Открыть карты"
+    player_move(player, dealer)
+  end 
+
+  def player_choice(player, dealer)
+    puts "#{player.name}, выберите ход:"
+    puts "1. Открыть карты"
+    puts "2. Добавить карту"
+    puts "3. Пропустить"
+    player_move(player, dealer)
+  end
+  
+  def player_move(player, dealer) 
     choice = gets.chomp.to_i 
     case choice
-    when 1 
-      puts "Вы передали ход крупье"
-      dealer_move(player, dealer)
+    when 1 then open(player, dealer)
+      
     when 2  
       player_add_card(player, dealer) 
-    when 3 then open(player, dealer)
+    when 3 
+      puts "Вы передали ход крупье"
+      dealer_move(player, dealer)
     end  
   rescue RuntimeError =>e
     puts e.message 
@@ -151,14 +163,14 @@ class Game
   def dealer_move(player, dealer)
     if dealer.points(deck) >= 17 
       puts "Крупье пропустил ход"
-      player_move(player, dealer)
+      player_left_choice(player, dealer)
     elsif dealer.points(deck) < 17 && dealer.cards.count < 3
       add_card(dealer)
       puts "Крупье добавил карту. Карты крупье #{"*" * dealer.cards.count}"
       if three_cards?(player, dealer) || twenty_one?(player, dealer)
         open(player, dealer)
       else  
-        player_move(player, dealer)
+        player_left_choice(player, dealer)
       end 
     end 
   end
