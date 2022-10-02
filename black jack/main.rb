@@ -158,7 +158,8 @@ class Game
       puts "Ход переходит крупье"
       dealer_move(player, dealer)
     end
-  rescue 
+  rescue RuntimeError => e
+    puts e.message
     player_left_choice(player, dealer)
   end
   
