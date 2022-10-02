@@ -157,7 +157,9 @@ class Game
     else 
       puts "Ход переходит крупье"
       dealer_move(player, dealer)
-    end 
+    end
+  rescue 
+    player_left_choice(player, dealer)
   end
   
   def dealer_move(player, dealer)
