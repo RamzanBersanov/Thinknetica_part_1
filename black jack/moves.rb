@@ -9,17 +9,25 @@ module Moves
   def points(deck)
     @points = 0
     @cards.each do |card|
-     deck.each do |key, value| 
-       if @points >= 11
-        deck["ace♠"] = 1
-        deck["ace♥"] = 1
-        deck["ace♦"] = 1
-        deck["ace♣"] = 1
-       end 
-       @points += value if card == key  
-     end
+      deck.each do |key, value| 
+        @points += value if card == key
+      end 
     end 
+    ace_points(deck)
     @points
   end
+
+  def ace_points(deck)
+    @cards.each do |card|
+      if card.include?("ace")
+        if @points >= 11
+          @points += 1
+        elsif @points < 11
+          @points += 11
+        end 
+      end 
+    end 
+    @points 
+  end 
  
 end
