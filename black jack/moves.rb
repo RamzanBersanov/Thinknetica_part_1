@@ -13,11 +13,11 @@ module Moves
         @points += value if card == key
       end 
     end 
-    ace_points(deck)
+    ace_points
     @points
   end
 
-  def ace_points(deck)
+  def ace_points
     @cards.each do |card|
       if card.include?("ace")
         if @points >= 11
